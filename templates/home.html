@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Converter</title>
+</head>
+<body>
+<a href="{% url 'encode-view' %}">Encode</a>
+<a href="{% url 'decode-view' %}">Decode</a>
+<h1>{% if 'decode' in request.path %}Decode{% else %}Encode{% endif %}</h1>
+<form method = "post" enctype="multipart/form-data">
+    {% csrf_token %}
+<p>Input: <input class="form-control" name="input" id="input" type="text" value="{{ input }}"/></p>
+<input type="submit" value="Convert"/>
+    </form>
+<p>Output: <input readonly class="form-control" name="output" id="input" type="text" value="{{ output }}"/></p>
+</body>
+</html>
